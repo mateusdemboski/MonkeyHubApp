@@ -6,9 +6,7 @@
              Title="Página Inicial">
 
 	<StackLayout>
-        <Button Text="Navegação não modal" Clicked="Button_OnClicked"/>
-        <Button Text="Navegação modal" Clicked="ButtonModal_OnClicked"/>
-        <Button Text="Voltar modal" Clicked="ButtonVoltarModal_OnClicked"/>
+        <Button Text="Navegação não modal" Command="AboutCommand"/>
         <Entry Text="{Binding SearchTerm}" />
         <Button Command="{Binding SearchCommand}" />
         <ListView ItemsSource="{Binding Resultados}">

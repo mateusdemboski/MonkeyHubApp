@@ -51,11 +51,20 @@ namespace MonkeyHubApp.ViewModels
 
         public Command SearchCommand { get; }
 
+        public Command AboutCommand { get; }
+
         public MainViewModel()
         {
             SearchCommand = new Command(ExecuteSearchCommand, CanExecuteSearchCommand);
 
+            AboutCommand = new Command(ExecutrAboutCommand);
+
             Resultados = new ObservableCollection<Tag>();
+        }
+
+        async void ExecutrAboutCommand()
+        {
+            await PushAsync<AboutViewModel>();
         }
 
         async void ExecuteSearchCommand()
