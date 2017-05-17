@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MonkeyHubApp.Models;
+using MonkeyHubApp.Services;
 using Xamarin.Forms;
 
 namespace MonkeyHubApp
@@ -13,7 +15,13 @@ namespace MonkeyHubApp
         public MainPage()
         {
             InitializeComponent();
-            BindingContext = new MainViewModel();
+            BindingContext = new MainViewModel(new MonkeyHubApiService());
+        }
+
+        private void ListView_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var tag = (sender as ListView)?.SelectedItem as Tag;
+            (BindingContext as MainViewModel)?.ShowCategoriaCommand.Execute(tag);
         }
     }
 }
